@@ -8,7 +8,12 @@ from webdriver_manager.chrome import ChromeDriverManager
 def main():
 	load_dotenv('.env')
 	print('A empezar a joder...')
-	driver = webdriver.Chrome(ChromeDriverManager().install())
+	
+
+	# Guarda la sesion
+	options = webdriver.ChromeOptions()
+	options.add_argument('--user-data-dir=./SessionData')
+	driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 	driver.get('https://web.whatsapp.com/')
 
 	name = input('Nombre del usuario o grupo: ')
