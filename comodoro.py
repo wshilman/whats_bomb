@@ -3,8 +3,7 @@ import time
 import logging
 
 from dotenv import load_dotenv
-import selenium
-from selenium import webdriver
+from selenium import webdriver, common
 from webdriver_manager.chrome import ChromeDriverManager
 	
 def main():
@@ -30,7 +29,8 @@ def main():
 		user.click()
 		
 		# The classname of message box may vary.
-		msg_box = driver.find_element_by_class_name(os.getenv('MSG_BOX')) 
+		msg_box = driver.find_element_by_class_name('sasdasd')
+		# msg_box = driver.find_element_by_class_name(os.getenv('MSG_BOX')) 
 			
 		for i in range(count):
 			msg_box.send_keys(msg)
@@ -38,7 +38,7 @@ def main():
 			button = driver.find_element_by_class_name(os.getenv('SEND_BUTTON'))
 			button.click()
 			# time.sleep(2)
-	except selenium.common.exceptions.NoSuchElementException:
+	except common.exceptions.NoSuchElementException:
 		print("VERIFICAR LOS NOMBRES EN .ENV")
 	except Exception as e:
 		logging.error(e)
